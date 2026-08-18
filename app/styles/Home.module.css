@@ -1,4 +1,4 @@
-/* app/styles/Home.module.css */
+/* app/page.tsx (Home) styling */
 
 .hero {
   position: relative;
@@ -108,7 +108,7 @@
   gap: var(--space-md);
 }
 
-.whyGridFirstChild {
+.whyGrid > :first-child {
   grid-column: span 2;
   grid-row: span 2;
 }
@@ -118,7 +118,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .whyGridFirstChild {
+  .whyGrid > :first-child {
     grid-column: span 2;
     grid-row: span 1;
   }
@@ -129,7 +129,7 @@
     grid-template-columns: 1fr;
   }
 
-  .whyGridFirstChild {
+  .whyGrid > :first-child {
     grid-column: span 1;
   }
 }
@@ -140,3 +140,4 @@
   flex-direction: column;
   justify-content: center;
 }
+

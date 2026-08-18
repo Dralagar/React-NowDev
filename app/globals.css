@@ -2,6 +2,8 @@
 
 /* ============================================================
    REACTNOW DEV — GLOBAL DESIGN SYSTEM
+   PALETTE: #3368A0 (Primary Blue), #66A3BF (Secondary Blue)
+            #C8DFDB (Light Mint), #F2EFE7 (Warm White)
    ============================================================ */
 
 :root {
@@ -9,41 +11,49 @@
      Core surfaces
      ----------------------------- */
 
-  --background: #ffffff;
-  --foreground: #102129;
+  --background: #F2EFE7;
+  --foreground: #1a2a3a;
 
   /* -----------------------------
-     Brand
+     Brand - New Palette
      ----------------------------- */
 
-  --color-navy: #102129;
-  --color-navy-2: #17313d;
+  --color-primary: #3368A0;
+  --color-primary-dark: #1a4a7a;
+  --color-primary-light: #4a8ac0;
+  --color-primary-muted: #5a78a0;
 
-  --color-blue: #1a7ead;
-  --color-blue-light: #6ccdfb;
+  --color-secondary: #66A3BF;
+  --color-secondary-light: #8ac0d4;
+  --color-secondary-dark: #4a87a3;
 
-  --color-pink: #e85685;
-  --color-pink-light: #fc8cb8;
-  --color-pink-ink: #c74a72;
+  --color-mint: #C8DFDB;
+  --color-mint-light: #dceeea;
+  --color-mint-dark: #b0ccc7;
+
+  --color-cream: #F2EFE7;
+  --color-cream-dark: #e5e0d5;
+  --color-cream-warm: #f5f2eb;
 
   /* -----------------------------
      Supporting UI colours
      ----------------------------- */
 
-  --color-ink: #102129;
-  --color-gray: #62727a;
-  --color-gray-light: #8b9aa1;
+  --color-ink: #1a2a3a;
+  --color-gray: #5a6a7a;
+  --color-gray-light: #8a9aaa;
+  --color-gray-muted: #b0c0cc;
 
-  --color-light: #ebf5fa;
-  --color-border: #cce0e8;
+  --color-light: #F2EFE7;
+  --color-border: #d5d8d0;
 
   /* -----------------------------
      Effects
      ----------------------------- */
 
-  --shadow-sm: 0 2px 8px rgba(16, 33, 41, 0.05);
-  --shadow-md: 0 10px 30px rgba(16, 33, 41, 0.08);
-  --shadow-lg: 0 20px 50px rgba(16, 33, 41, 0.12);
+  --shadow-sm: 0 2px 8px rgba(51, 104, 160, 0.08);
+  --shadow-md: 0 10px 30px rgba(51, 104, 160, 0.10);
+  --shadow-lg: 0 20px 50px rgba(51, 104, 160, 0.15);
 
   /* -----------------------------
      Radius
@@ -87,19 +97,27 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-navy: var(--color-navy);
-  --color-navy-2: var(--color-navy-2);
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-muted: var(--color-primary-muted);
 
-  --color-blue: var(--color-blue);
-  --color-blue-light: var(--color-blue-light);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-secondary-dark: var(--color-secondary-dark);
 
-  --color-pink: var(--color-pink);
-  --color-pink-light: var(--color-pink-light);
-  --color-pink-ink: var(--color-pink-ink);
+  --color-mint: var(--color-mint);
+  --color-mint-light: var(--color-mint-light);
+  --color-mint-dark: var(--color-mint-dark);
+
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-cream-warm: var(--color-cream-warm);
 
   --color-ink: var(--color-ink);
   --color-gray: var(--color-gray);
   --color-gray-light: var(--color-gray-light);
+  --color-gray-muted: var(--color-gray-muted);
 
   --color-light: var(--color-light);
   --color-border: var(--color-border);
@@ -152,8 +170,8 @@ a {
 }
 
 ::selection {
-  background: var(--color-pink-light);
-  color: var(--color-navy);
+  background: var(--color-primary);
+  color: #ffffff;
 }
 
 /* ============================================================
@@ -161,12 +179,12 @@ a {
    ============================================================ */
 
 :focus-visible {
-  outline: 3px solid var(--color-blue);
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
 /* ============================================================
-   TYPOGRAPHY - FIXED: No forced color on headings
+   TYPOGRAPHY - ALL HEADINGS VISIBLE EVERYWHERE
    ============================================================ */
 
 h1,
@@ -179,8 +197,274 @@ h6 {
   text-wrap: balance;
 }
 
+/* Default heading color - dark blue for light backgrounds */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary-dark);
+}
+
 p {
   text-wrap: pretty;
+  color: var(--color-ink);
+}
+
+/* ============================================================
+   HERO SECTION - FULL VISIBILITY FIX
+   ============================================================ */
+
+/* Hero container with dark gradient background */
+.hero-container {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  position: relative;
+  overflow: hidden;
+}
+
+/* ALL text in hero - FORCED WHITE */
+.hero-container * {
+  color: #ffffff !important;
+}
+
+/* Exception for gradient text - keep gradient effect */
+.hero-container .text-gradient {
+  background: linear-gradient(135deg, #ffffff, var(--color-secondary-light)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.hero-container .text-gradient-warm {
+  background: linear-gradient(135deg, #ffffff, var(--color-secondary-light), var(--color-mint)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Hero badge - visible */
+.hero-container .hero-badge {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Hero subtitle - visible */
+.hero-container .hero-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================================
+   DARK SECTION - FULL VISIBILITY
+   ============================================================ */
+
+/* Any section with dark background - FORCE WHITE TEXT */
+.bg-primary-dark,
+.bg-primary,
+section.bg-primary-dark,
+section.bg-primary {
+  color: #ffffff !important;
+}
+
+.bg-primary-dark *,
+.bg-primary *,
+section.bg-primary-dark *,
+section.bg-primary * {
+  color: #ffffff !important;
+}
+
+/* Exception for gradient text in dark sections */
+.bg-primary-dark .text-gradient,
+.bg-primary .text-gradient {
+  background: linear-gradient(135deg, #ffffff, var(--color-secondary-light)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.bg-primary-dark .text-gradient-warm,
+.bg-primary .text-gradient-warm {
+  background: linear-gradient(135deg, #ffffff, var(--color-secondary-light), var(--color-mint)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Muted text in dark sections - slightly transparent but visible */
+.bg-primary-dark .text-white\/70,
+.bg-primary .text-white\/70 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.bg-primary-dark .text-white\/80,
+.bg-primary .text-white\/80 {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.bg-primary-dark .text-white\/90,
+.bg-primary .text-white\/90 {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ============================================================
+   LIGHT SECTION - FULL VISIBILITY
+   ============================================================ */
+
+/* Sections with light backgrounds - dark text */
+.bg-cream,
+.bg-cream-warm,
+.bg-mint,
+.bg-mint-light,
+.bg-white {
+  color: var(--foreground) !important;
+}
+
+.bg-cream h1,
+.bg-cream h2,
+.bg-cream h3,
+.bg-cream h4,
+.bg-cream-warm h1,
+.bg-cream-warm h2,
+.bg-cream-warm h3,
+.bg-cream-warm h4,
+.bg-mint h1,
+.bg-mint h2,
+.bg-mint h3,
+.bg-mint h4,
+.bg-mint-light h1,
+.bg-mint-light h2,
+.bg-mint-light h3,
+.bg-mint-light h4,
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4 {
+  color: var(--color-primary-dark) !important;
+}
+
+.bg-cream p,
+.bg-cream-warm p,
+.bg-mint p,
+.bg-mint-light p,
+.bg-white p {
+  color: var(--color-ink) !important;
+}
+
+.bg-cream .text-gray,
+.bg-cream-warm .text-gray,
+.bg-mint .text-gray,
+.bg-mint-light .text-gray,
+.bg-white .text-gray {
+  color: var(--color-gray) !important;
+}
+
+/* ============================================================
+   BUTTON VISIBILITY - ALWAYS VISIBLE
+   ============================================================ */
+
+/* Primary button - visible on all backgrounds */
+.btn-primary {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid var(--color-primary) !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark) !important;
+  border-color: var(--color-primary-dark) !important;
+}
+
+/* Secondary button - visible on all backgrounds */
+.btn-secondary {
+  background: var(--color-secondary) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid var(--color-secondary) !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary-dark) !important;
+  border-color: var(--color-secondary-dark) !important;
+}
+
+/* White button - visible on all backgrounds */
+.btn-white {
+  background: #ffffff !important;
+  color: var(--color-primary) !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid #ffffff !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-white:hover {
+  background: var(--color-cream-dark) !important;
+  border-color: var(--color-cream-dark) !important;
+}
+
+/* Ghost white button - visible on dark backgrounds */
+.btn-ghost-white {
+  background: transparent !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-ghost-white:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Outline button - visible on light backgrounds */
+.btn-outline {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid var(--color-primary) !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Gradient button - visible everywhere */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none !important;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* ============================================================
@@ -205,14 +489,25 @@ p {
    ============================================================ */
 
 .text-gradient {
-  background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-light), var(--color-mint));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .brand-gradient {
-  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.brand-gradient-light {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
 }
 
 /* ============================================================
@@ -221,7 +516,7 @@ p {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-navy-2) var(--color-light);
+  scrollbar-color: var(--color-primary) var(--color-mint-light);
 }
 
 ::-webkit-scrollbar {
@@ -230,12 +525,12 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-light);
+  background: var(--color-mint-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-navy-2);
-  border: 2px solid var(--color-light);
+  background: var(--color-primary);
+  border: 2px solid var(--color-mint-light);
   border-radius: var(--radius-full);
 }
 
