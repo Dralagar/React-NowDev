@@ -68,7 +68,7 @@ export default function Navbar() {
         >
           <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-md">
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="ReactNow Dev logo"
               width={34}
               height={31}
@@ -183,13 +183,14 @@ export default function Navbar() {
           </div>
 
           <div className="mt-6 space-y-4 border-t border-mint pt-6">
-            <Button 
+            {/* FIXED: Replaced Button with Link to handle onClick */}
+            <Link 
               href="/contact" 
-              className="w-full bg-gradient-to-r from-primary to-secondary text-center text-white shadow-md transition-all duration-300 hover:shadow-lg"
+              className="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-primary to-secondary text-white shadow-md transition-all duration-300 hover:shadow-lg text-center"
               onClick={() => setIsOpen(false)}
             >
               Start a project ✨
-            </Button>
+            </Link>
 
             <div className="flex flex-wrap gap-2">
               <span className="rounded-full bg-mint-light px-3 py-1.5 text-xs font-semibold text-gray">
