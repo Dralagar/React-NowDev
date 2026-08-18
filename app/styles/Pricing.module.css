@@ -1,0 +1,34 @@
+/* app/pricing/page.tsx styling */
+
+.card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.highlighted {
+  position: relative;
+  box-shadow: 0 30px 60px -25px rgba(16, 33, 41, 0.55);
+}
+
+.highlighted::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.ribbon {
+  /* pink-ink, not pink: this badge carries white text, and the vivid
+     --color-pink only reads 3.4:1 against white (fails 4.5:1 AA) */
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink-ink));
+  color: #fff;
+}

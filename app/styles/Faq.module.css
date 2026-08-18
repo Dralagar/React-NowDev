@@ -1,0 +1,13 @@
+/* app/faq/page.tsx styling */
+
+.item {
+  transition: background-color 0.2s ease;
+}
+
+.item:hover {
+  background: var(--color-light);
+}
+
+.chevron {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}

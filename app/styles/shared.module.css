@@ -1,0 +1,117 @@
+/* ============================================================
+   SHARED STYLE PRIMITIVES
+   Imported by page-specific modules for effects Tailwind utility
+   classes can't express cleanly: layered blobs, gradient text,
+   keyframe motion, colour-matched hover shadows.
+
+   Usage:
+     import shared from "../styles/shared.module.css";
+     <div className={shared.heroBlobs}>...
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blobFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-3%, 4%) scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeInUp,
+  .heroBlobs::before,
+  .heroBlobs::after {
+    animation: none !important;
+  }
+}
+
+/* Fade-in entrance for hero/section content */
+.fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Two soft, blurred gradient blobs behind a dark hero section.
+   Add `position: relative; overflow: hidden;` on the section. */
+.heroBlobs::before,
+.heroBlobs::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+  animation: blobFloat 14s ease-in-out infinite;
+}
+
+.heroBlobs::before {
+  width: 22rem;
+  height: 22rem;
+  top: -6rem;
+  right: -6rem;
+  background: radial-gradient(circle, var(--color-pink) 0%, transparent 70%);
+  opacity: 0.25;
+}
+
+.heroBlobs::after {
+  width: 18rem;
+  height: 18rem;
+  bottom: -5rem;
+  left: -4rem;
+  background: radial-gradient(circle, var(--color-blue) 0%, transparent 70%);
+  opacity: 0.22;
+  animation-delay: -7s;
+}
+
+/* Gradient headline accent — wrap the word(s) you want to pop */
+.gradientText {
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Card hover: lift + colour-matched shadow instead of a flat grey shadow */
+.cardHover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -18px rgba(16, 33, 41, 0.28);
+}
+
+/* Small gradient icon badge (used for service icons, avatars, etc.) */
+.gradientBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(26, 126, 173, 0.55);
+}
+
+/* Thin gradient rule used to separate sections without a hard border */
+.sectionDivider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border) 20%,
+    var(--color-border) 80%,
+    transparent
+  );
+  border: none;
+}

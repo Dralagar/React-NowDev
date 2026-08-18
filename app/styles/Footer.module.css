@@ -1,0 +1,282 @@
+.footer {
+  position: relative;
+
+  background: var(--color-light);
+  border-top: 1px solid var(--color-border);
+
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: min(700px, 80vw);
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-blue),
+    var(--color-pink),
+    transparent
+  );
+
+  transform: translateX(-50%);
+}
+
+.container {
+  width: min(100% - 3rem, 1160px);
+  margin-inline: auto;
+
+  padding: 4.5rem 0 1.5rem;
+}
+
+/* ============================================================
+   TOP
+   ============================================================ */
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.3fr) 2fr;
+  gap: 5rem;
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  color: var(--color-navy);
+
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+
+  text-decoration: none;
+}
+
+.logoWrapper {
+  display: grid;
+  place-items: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.logo {
+  width: 32px;
+  height: auto;
+}
+
+.brand:hover .logoWrapper {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 33, 41, 0.08);
+}
+
+.description {
+  max-width: 330px;
+
+  margin-top: 1.25rem;
+
+  color: var(--color-gray);
+
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+/* ============================================================
+   SOCIAL
+   ============================================================ */
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+
+  margin-top: 1.5rem;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.45rem 0.75rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  color: var(--color-navy);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.social:hover {
+  color: var(--color-blue);
+  border-color: var(--color-blue);
+  background: white;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   COLUMNS
+   ============================================================ */
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.columnTitle {
+  margin: 0;
+
+  color: var(--color-navy);
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  margin: 1.1rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.footerLink {
+  color: var(--color-gray);
+
+  font-size: 0.875rem;
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.footerLink:hover {
+  color: var(--color-blue);
+}
+
+/* ============================================================
+   BOTTOM
+   ============================================================ */
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid var(--color-border);
+
+  color: var(--color-gray);
+
+  font-size: 0.78rem;
+}
+
+.bottom p {
+  margin: 0;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.contact a {
+  color: inherit;
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.contact a:hover {
+  color: var(--color-blue);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 2rem, 1160px);
+    padding-top: 3.5rem;
+  }
+
+  .top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: calc(100% - 1.5rem);
+    padding-top: 3rem;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+
+  .bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 3rem;
+  }
+
+  .contact {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}

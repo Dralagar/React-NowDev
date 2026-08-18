@@ -1,26 +1,268 @@
 @import "tailwindcss";
 
+/* ============================================================
+   REACTNOW DEV — GLOBAL DESIGN SYSTEM
+   ============================================================ */
+
 :root {
+  /* -----------------------------
+     Core surfaces
+     ----------------------------- */
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #102129;
+
+  /* -----------------------------
+     Brand
+     ----------------------------- */
+
+  --color-navy: #102129;
+  --color-navy-2: #17313d;
+
+  --color-blue: #1a7ead;
+  --color-blue-light: #6ccdfb;
+
+  --color-pink: #e85685;
+  --color-pink-light: #fc8cb8;
+  --color-pink-ink: #c74a72;
+
+  /* -----------------------------
+     Supporting UI colours
+     ----------------------------- */
+
+  --color-ink: #102129;
+  --color-gray: #62727a;
+  --color-gray-light: #8b9aa1;
+
+  --color-light: #ebf5fa;
+  --color-border: #cce0e8;
+
+  /* -----------------------------
+     Effects
+     ----------------------------- */
+
+  --shadow-sm: 0 2px 8px rgba(16, 33, 41, 0.05);
+  --shadow-md: 0 10px 30px rgba(16, 33, 41, 0.08);
+  --shadow-lg: 0 20px 50px rgba(16, 33, 41, 0.12);
+
+  /* -----------------------------
+     Radius
+     ----------------------------- */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* -----------------------------
+     Fluid typography
+     ----------------------------- */
+
+  --text-display: clamp(2.5rem, 1.6rem + 3vw, 4.5rem);
+  --text-h1: clamp(2rem, 1.5rem + 1.8vw, 3.25rem);
+  --text-h2: clamp(1.6rem, 1.3rem + 1vw, 2.35rem);
+  --text-h3: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
+
+  /* -----------------------------
+     Spacing
+     ----------------------------- */
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
 }
+
+/* ============================================================
+   TAILWIND THEME
+   ============================================================ */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-navy: var(--color-navy);
+  --color-navy-2: var(--color-navy-2);
+
+  --color-blue: var(--color-blue);
+  --color-blue-light: var(--color-blue-light);
+
+  --color-pink: var(--color-pink);
+  --color-pink-light: var(--color-pink-light);
+  --color-pink-ink: var(--color-pink-ink);
+
+  --color-ink: var(--color-ink);
+  --color-gray: var(--color-gray);
+  --color-gray-light: var(--color-gray-light);
+
+  --color-light: var(--color-light);
+  --color-border: var(--color-border);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
+  min-height: 100vh;
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-pink-light);
+  color: var(--color-navy);
+}
+
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   TYPOGRAPHY - FIXED: No forced color on headings
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   GLOBAL LAYOUT UTILITIES
+   ============================================================ */
+
+.container-site {
+  width: min(100% - 3rem, 1160px);
+  margin-inline: auto;
+}
+
+.section-y {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+.section-y-sm {
+  padding-block: clamp(3rem, 5vw, 5rem);
+}
+
+/* ============================================================
+   GRADIENT UTILITIES
+   ============================================================ */
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-navy-2) var(--color-light);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-2);
+  border: 2px solid var(--color-light);
+  border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .container-site {
+    width: calc(100% - 1.5rem);
+  }
 }

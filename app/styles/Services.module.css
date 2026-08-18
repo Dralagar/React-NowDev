@@ -1,0 +1,57 @@
+/* app/services/page.tsx and app/services/[slug]/page.tsx styling */
+
+.serviceCard {
+  position: relative;
+  container-type: inline-size;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -20px rgba(26, 126, 173, 0.35);
+  border-color: var(--color-blue);
+}
+
+/* Container query, not a media query: the card switches from a
+   stacked icon+title to a side-by-side layout based on its own
+   width, so it looks right whether it's in a 3-col grid, a 2-col
+   grid, or a narrow sidebar — future changes to the grid don't
+   require touching this component. */
+.serviceCardHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+@container (min-width: 280px) {
+  .serviceCardHead {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .serviceCardHead .iconBadge {
+    margin-bottom: 0;
+  }
+}
+
+.iconBadge {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  font-size: 20px;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  box-shadow: 0 8px 20px -8px rgba(26, 126, 173, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.checkBullet {
+  background: rgba(26, 126, 173, 0.12);
+  color: var(--color-blue);
+}

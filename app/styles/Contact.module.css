@@ -1,0 +1,38 @@
+/* app/contact/page.tsx styling */
+
+.methodCard {
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.methodCard:hover {
+  transform: translateX(4px);
+  border-color: var(--color-blue);
+}
+
+.formCard {
+  position: relative;
+}
+
+.formCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-pink));
+}
+
+.submitButton {
+  /* pink-ink, not pink: this button carries white text, and the vivid
+     --color-pink only reads 3.4:1 against white (fails 4.5:1 AA) */
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink-ink));
+  box-shadow: 0 10px 24px -10px rgba(26, 126, 173, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -12px rgba(232, 86, 133, 0.5);
+}

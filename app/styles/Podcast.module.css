@@ -1,0 +1,104 @@
+/* app/podcast/page.tsx styling */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Simple CSS-only animated waveform, purely decorative */
+.wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+
+.wave span {
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--color-blue-light), var(--color-pink));
+  animation: waveBounce 1.2s ease-in-out infinite;
+}
+
+.wave span:nth-child(1) {
+  height: 40%;
+  animation-delay: 0s;
+}
+.wave span:nth-child(2) {
+  height: 70%;
+  animation-delay: 0.15s;
+}
+.wave span:nth-child(3) {
+  height: 100%;
+  animation-delay: 0.3s;
+}
+.wave span:nth-child(4) {
+  height: 55%;
+  animation-delay: 0.45s;
+}
+.wave span:nth-child(5) {
+  height: 85%;
+  animation-delay: 0.6s;
+}
+
+@keyframes waveBounce {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave span {
+    animation: none;
+  }
+}
+
+.platformButton {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.platformButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -14px rgba(16, 33, 41, 0.35);
+}
+
+.spotify:hover {
+  border-color: #1db954;
+  color: #1db954;
+}
+
+.apple:hover {
+  border-color: var(--color-pink);
+  color: var(--color-pink-light);
+}
+
+.youtube:hover {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.google:hover {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+}
+
+.episodeCard {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.episodeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -22px rgba(16, 33, 41, 0.3);
+}
+
+.episodeNumber {
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-pink));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
